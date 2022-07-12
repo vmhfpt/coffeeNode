@@ -1,0 +1,210 @@
+<div class="page-heading about-heading header-text">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="text-content">
+          <h4>Chi tiết sản phẩm</h4>
+          <h2>{{dataItem.name}}</h2>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="best-features about-features">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-heading">
+          <h2>CHI TIẾT SẢN PHẨM</h2>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="right-image">
+          <img src="/img/products/{{dataItem.thumb}}" alt=""> <br/>
+          {{{dataItem.content}}}
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="left-content">
+          <h4>Mô tả sản phẩm</h4>
+          <p>{{dataItem.description}}.</p>
+          <p>Giá : {{dataItem.price}} đ</p>
+          <p>Danh mục : {{parentShow dataItem.category_id}}</p>
+          <p>Số lượng : Còn {{dataItem.quantity}} sản phẩm</p>
+          <ul class="social-icons">
+            <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+            <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+            <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+            <li><a href="#"><i class="fa fa-behance"></i></a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="team-members">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-heading">
+          <h2>Sản phẩm mới</h2>
+        </div>
+      </div>
+
+      {{#each dataProduct}}
+      <div class="col-md-4">
+        <div class="team-member">
+          <div class="thumb-container">
+            <img src="/img/products/{{this.thumb}}" alt="">
+            <div class="hover-effect">
+              <div class="hover-content">
+                <ul class="social-icons">
+                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                  <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
+                  <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+         <a href="/{{this.slug}}"> <div class="down-content">
+            <h4>{{this.name}}</h4>
+            <span class="price_custom">{{this.price}} đ</span>
+            <span class="price_sale">{{this.price_sale}} đ</span>
+            <p>{{this.description}}.</p>
+            <p>Còn <i class="quantity-product">{{this.quantity}}</i> Sản phẩm.</p>
+          </div></a>
+        </div>
+      </div>
+      {{/each}}
+
+
+    </div>
+  </div>
+</div>
+
+<div class="services">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="service-item">
+          <div class="icon">
+            <i class="fa fa-cart-arrow-down"></i>
+          </div>
+          <div class="down-content">
+            <h4>Cà Phê Trung Nguyên</h4>
+            <p>Không chỉ với G7, mọi sản phẩm mang thương hiệu Trung Nguyên đều được sản xuất trên công nghệ hàng đầu và
+              bí quyết không thể sao chép được giúp giữ được những phần tinh túy trong từng hạt cà phê một cách trọn
+              vẹn, đong đầy trong tách cà phê mà bạn đang cầm trên tay..</p>
+            <a href="/ca-phe-hop/ca-phe-trung-nguyen-g7" class="filled-button">Xem sản phẩm</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-item">
+          <div class="icon">
+            <i class="fa fa-line-chart"></i>
+          </div>
+          <div class="down-content">
+            <h4>Nescafé Café Việt</h4>
+            <p>Thật thú vị khi cùng ngồi với vài người bạn thân bên ly cà phê bốc khói vào những buổi sáng sớm. Hương
+              thơm, vị đắng và sự ấm áp của cà phê nóng kích thích những đầu dây thần kinh từ đầu lưỡi đến dạ dày nhanh
+              chóng lan toả cảm giác sảng khoái toàn khắp cơ thể.</p>
+            <a href="/ca-phe-hop/nescafe-cafe-viet" class="filled-button">Xem sản phẩm</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="service-item">
+          <div class="icon">
+            <i class="fa fa-coffee"></i>
+          </div>
+          <div class="down-content">
+            <h4>Espresso King Coffee</h4>
+            <p>Cà phê hòa tan KING COFFEE Espresso được chế tác từ những hạt cà phê Arabica hảo hạng của vùng đất cà phê
+              trứ danh Việt Nam, kết hợp với bí quyết phương Đông và công nghệ bậc nhất từ châu Âu, đem đến một hương vị
+              đậm đà, mạnh mẽ như một ly Espresso Ý mới pha!.</p>
+            <a href="/ca-phe-hop/espresso-king-coffee" class="filled-button">Xem sản phẩm</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="happy-clients">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="section-heading">
+          <h2>Thương hiệu nổi tiếng</h2>
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="owl-clients owl-carousel owl-loaded owl-drag">
+
+
+
+
+
+
+
+
+
+
+
+          <div class="owl-stage-outer">
+            <div class="owl-stage"
+              style="transform: translate3d(-710px, 0px, 0px); transition: all 0s ease 0s; width: 2841px;">
+              <div class="owl-item cloned" style="width: 216.667px; margin-right: 20px;">
+                <div class="client-item">
+                  <img src="https://tenpack.com.vn/wp-content/uploads/2020/05/trung-nguyen-logo.jpg" alt="4">
+                </div>
+              </div>
+              <div class="owl-item cloned" style="width: 216.667px; margin-right: 20px;">
+                <div class="client-item">
+                  <img
+                    src="https://is1-ssl.mzstatic.com/image/thumb/Purple62/v4/09/18/f1/0918f158-d725-dc88-f1dc-836019172af3/source/512x512bb.jpg"
+                    alt="5">
+                </div>
+              </div>
+              <div class="owl-item cloned" style="width: 216.667px; margin-right: 20px;">
+                <div class="client-item">
+                  <img src="https://vn-live-05.slatic.net/p/31100d255bb84265e352c68bda3785de.jpg_525x525q80.jpg"
+                    alt="6">
+                </div>
+              </div>
+              <div class="owl-item active" style="width: 216.667px; margin-right: 20px;">
+                <div class="client-item">
+                  <img src="https://cdn.haitrieu.com/wp-content/uploads/2022/06/logo-phindeli-am-ban.png" alt="1">
+                </div>
+              </div>
+              <div class="owl-item active" style="width: 216.667px; margin-right: 20px;">
+                <div class="client-item">
+                  <img
+                    src="https://upload.wikimedia.org/wikipedia/en/thumb/c/c9/Highlands_Coffee_logo.svg/1200px-Highlands_Coffee_logo.svg.png"
+                    alt="2">
+                </div>
+              </div>
+              <div class="owl-item active" style="width: 216.667px; margin-right: 20px;">
+                <div class="client-item">
+                  <img
+                    src="https://thumbs.dreamstime.com/b/robusta-coffee-hand-written-lettering-logo-label-badge-emblem-modern-brush-calligraphy-vintage-retro-style-isolated-black-86743073.jpg"
+                    alt="3">
+                </div>
+              </div>
+            
+            </div>
+          </div>
+          <div class="owl-nav disabled"><button type="button" role="presentation" class="owl-prev"><span
+                aria-label="Previous">‹</span></button><button type="button" role="presentation" class="owl-next"><span
+                aria-label="Next">›</span></button></div>
+          <div class="owl-dots"><button role="button" class="owl-dot active"><span></span></button><button role="button"
+              class="owl-dot"><span></span></button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

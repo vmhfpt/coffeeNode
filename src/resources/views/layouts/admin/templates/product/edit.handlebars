@@ -1,0 +1,199 @@
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 d-flex align-items-center">
+                        <li class="breadcrumb-item"><a href="index.html" class="link"><i
+                                    class="mdi mdi-home-outline fs-4"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Sửa sản phẩm</li>
+                    </ol>
+                </nav>
+                <h1 class="mb-0 fw-bold">Sửa sản phẩm {{dataItem.name}}</h1>
+            </div>
+
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <!-- Column -->
+
+            <!-- Column -->
+            <!-- Column -->
+            <div class="col-lg-8 col-xlg-9 col-md-7">
+                {{#if success}}
+                <div class="alert alert-success">
+                    <strong>Hoàn tất !</strong> {{ success}}.
+                </div>
+                {{/if}}
+                <div class="card">
+                    <div class="card-body">
+                        <form method="POST" action="/admin/product/edit/{{dataItem.slug}}" class="form-horizontal form-material mx-2"
+                            enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label class="col-md-12">Tên danh mục</label>
+                                <div class="col-md-12">
+                                    <input value="{{dataItem.name}}" name="name" type="text" placeholder="Cà phê"
+                                        class="form-control form-control-line">
+                                </div>
+                                {{#if arrError.name}}
+                                <div class="alert alert-danger">
+                                    <strong>Cảnh báo !</strong> {{arrError.name}}.
+                                </div>
+                                {{/if}}
+                            </div>
+
+
+
+                            <div class="form-group">
+                                <label for="example-email" class="col-md-12">Mô tả</label>
+                                <div class="col-md-12">
+                                    <input value="{{dataItem.description}}" type="text" placeholder="Sản phẩm ..."
+                                        class="form-control form-control-line" name="description" id="example-email">
+                                </div>
+                                {{#if arrError.description}}
+                                <div class="alert alert-danger">
+                                    <strong>Cảnh báo !</strong> {{arrError.description}}.
+                                </div>
+                                {{/if}}
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Giá sản phẩm</label>
+                                <div class="col-md-12">
+                                    <input value="{{dataItem.price}}" name="price" type="number"
+                                        placeholder="Đơn vị VND" class="form-control form-control-line">
+                                </div>
+                                {{#if arrError.price}}
+                                <div class="alert alert-danger">
+                                    <strong>Cảnh báo !</strong> {{arrError.price}}.
+                                </div>
+                                {{/if}}
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Giá ưu đãi</label>
+                                <div class="col-md-12">
+                                    <input value="{{dataItem.price_sale}}" name="price_sale" type="number"
+                                        placeholder="Đơn vị VND" class="form-control form-control-line">
+                                </div>
+                                {{#if arrError.price_sale}}
+                                <div class="alert alert-danger">
+                                    <strong>Cảnh báo !</strong> {{arrError.price_sale}}.
+                                </div>
+                                {{/if}}
+                            </div>
+                            <div class="form-group">
+                                <label class="col-md-12">Số lượng</label>
+                                <div class="col-md-12">
+                                    <input value="{{dataItem.quantity}}" name="quantity" type="number"
+                                        placeholder="Đơn vị sản phẩm" class="form-control form-control-line">
+                                </div>
+                                {{#if arrError.quantity}}
+                                <div class="alert alert-danger">
+                                    <strong>Cảnh báo !</strong> {{arrError.quantity}}.
+                                </div>
+                                {{/if}}
+                            </div>
+                            <div class="form-group">
+                                <label for="example-email" class="col-md-12">Ảnh sản phẩm</label>
+                                <div class="col-md-12">
+                                    <input class="form-control customFile" type="file" id="formFile" name="thumb">
+                                </div>
+                                 {{#if arrError.thumb}}
+                                <div class="alert alert-danger">
+                                    <strong>Cảnh báo !</strong> {{arrError.thumb}}.
+                                </div>
+                                {{/if}}
+                                <div id="img">
+                                       <img id="result" src="/img/products/{{dataItem.thumb}}" width="300" height="300"/> 
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-12">Danh mục sản phẩm</label>
+                                <div class="col-sm-12">
+                                    <select name="category_id" class="form-select shadow-none form-control-line">
+                                        {{#each listCategory}}
+                                        <option {{ifCustom this._id ../dataItem.category_id}} value="{{this._id}}">
+                                            {{this.name}}</option>
+                                        {{/each}}
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <div class="form-group">
+                                <label class="col-sm-12">Trạng thái</label>
+                                <div class="col-sm-12">
+                                    <select name="active" class="form-select shadow-none form-control-line">
+                                        <option {{ifCustom 1 dataItem.active}} value="1"> Kinh doanh</option>
+                                        <option {{ifCustom 2 dataItem.active}} value="2"> Tạm hết hàng</option>
+                                        <option {{ifCustom 3 dataItem.active}} value="3"> Ngừng kinh doanh</option>
+                                    </select>
+                                </div>
+                            </div>
+                           
+
+                            <div class="form-group">
+                                <label class="col-md-12">Nội dung</label>
+                                <div class="col-md-12">
+                                     <textarea name="content">{{{dataItem.content}}}</textarea>
+                                </div>
+                                {{#if arrError.content}}
+                                <div class="alert alert-danger">
+                                    <strong>Cảnh báo !</strong> {{arrError.content}}.
+                                </div>
+                                {{/if}}
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <button class="btn btn-success text-white">Lưu lại</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<script src="https://cdn.ckeditor.com/4.19.0/standard/ckeditor.js"></script>
+<script>
+    CKEDITOR.replace('content');
+</script>
+<script>
+    function readURL(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $("#img").empty();
+                $("#img").append(`<br/> <img  src="${e.target.result}" width="400" height="300"/>`);
+
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    $(document).ready(function () {
+        $("#formFile").change(function () {
+            var fileName = $(this).val().split("\\").pop();
+            $(this).siblings(".customFile").addClass("selected").html(fileName);
+            readURL(this);
+        });
+    }); 
+</script>

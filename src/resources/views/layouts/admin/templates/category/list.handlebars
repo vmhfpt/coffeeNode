@@ -1,0 +1,123 @@
+<div class="page-wrapper">
+    <!-- ============================================================== -->
+    <!-- Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <div class="page-breadcrumb">
+        <div class="row align-items-center">
+            <div class="col-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-0 d-flex align-items-center">
+                        <li class="breadcrumb-item"><a href="index.html" class="link"><i
+                                    class="mdi mdi-home-outline fs-4"></i></a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Danh sách danh mục</li>
+                    </ol>
+                </nav>
+                <h1 class="mb-0 fw-bold">Danh sách danh mục</h1>
+            </div>
+
+        </div>
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Bread crumb and right sidebar toggle -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Container fluid  -->
+    <!-- ============================================================== -->
+    <div class="container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        <!-- Row -->
+        <div class="row">
+            <!-- column -->
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- title -->
+                        <div class="d-md-flex">
+
+                            <div class="ms-auto">
+                                <div class="dl">
+                                    <select class="form-select shadow-none">
+                                        <option value="0" selected="">Sắp xếp</option>
+                                        <option value="1">Mới nhất</option>
+                                        <option value="2">Cũ nhất</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- title -->
+                        <div class="table-responsive">
+                            <table class="table mb-0 table-hover align-middle text-nowrap">
+                                <thead>
+                                    <tr>
+                                        <th class="border-top-0">STT</th>
+                                        <th class="border-top-0">Tên</th>
+                                        <th class="border-top-0">Danh mục cha</th>
+                                        <th class="border-top-0">Mô tả</th>
+                                        <th class="border-top-0">Trạng thái</th>
+                                        <th class="border-top-0">Ngày thêm</th>
+                                        <th class="border-top-0">Sửa</th>
+                                        <th class="border-top-0">Xóa</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+
+                                    {{#each dataItem}}
+                                    <tr id="{{this._id}}">
+                                        <td>
+                                            <div class="d-flex align-items-center">
+
+                                                <div class="">
+                                                    <h4 class="m-b-0 font-16">{{autoIndex @index}}</h4>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td>{{this.name}}</td>
+                                        <td>{{parentShow this.parent_id}}</td>
+                                        <td>
+                                            {{this.description}}
+                                        </td>
+                                        <td>{{active this.active}}</td>
+                                        <td>{{this.createdAt}}</td>
+                                        <td><a href="/admin/category/edit/{{this.slug}}"><label
+                                                    class="badge bg-warning">Sửa</label> </a></td>
+                                        <td>
+                                            <label id="{{this._id}}" class="badge bg-danger delete-ajax">Xóa</label>
+                                        </td>
+                                    </tr>
+                                    {{/each}}
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+
+    $(document).ready(function () {
+        $(".delete-ajax").click(function () {
+            var value = $(this).attr('id');
+            var check = confirm("Bạn có chắc muốn xóa không");
+            if (check) {
+                $.ajax({
+                    method: "POST",
+                    url: "/admin/category/delete",
+                    data: { id : value }
+                })
+                    .done(function (msg) {
+                       if(msg.status = 'delete success'){
+                           $("#" + value).fadeOut(800);
+                       }
+                    });
+            }
+        });
+    });  
+</script>
